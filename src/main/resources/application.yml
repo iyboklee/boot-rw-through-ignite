@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: boot-rw-through-ignite
+  h2:
+    console:
+      enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:books;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM 'classpath:schema/h2-init.sql'
+    username: sa
+    password: sa
+server:
+  port: 8080
+ignite:
+  cluster:
+    nodes: 127.0.0.1:47500..47509
+  cache:
+    hotLoading: 0
+    writeBehind:
+      enabled: true
+      flush:
+        frequency: 5000
+        threads: 1
